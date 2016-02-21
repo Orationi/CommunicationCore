@@ -9,6 +9,7 @@
     <licenseUrl>https://github.com/Orationi/CommunicationCore/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/Orationi/CommunicationCore</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
     <copyright>Copyright 2016</copyright>
   </metadata>
 </package>
