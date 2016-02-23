@@ -41,7 +41,7 @@ namespace Orationi.CommunicationCore.Interfaces
 		ModuleVersionItem[] GetModuleVerionsList(string module);
 
 		[WebInvoke(UriTemplate = "Module/{moduleName}/",
-			Method = "GET",
+			Method = "POST",
 			ResponseFormat = WebMessageFormat.Json,
 			RequestFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.WrappedRequest)]
@@ -49,7 +49,7 @@ namespace Orationi.CommunicationCore.Interfaces
 		ModuleItem RegisterModule(string moduleName);
 
 		[WebInvoke(UriTemplate = "Unregister/Module/{module}/",
-			Method = "GET",
+			Method = "DELETE",
 			ResponseFormat = WebMessageFormat.Json,
 			RequestFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.WrappedRequest)]
@@ -57,7 +57,7 @@ namespace Orationi.CommunicationCore.Interfaces
 		AssignedModule[] UnregisterModule(string module);
 
 		[WebInvoke(UriTemplate = "Slave/{slave}/Assign/Module/{module}/",
-			Method = "GET",
+			Method = "PUT",
 			ResponseFormat = WebMessageFormat.Json,
 			RequestFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.WrappedRequest)]
@@ -65,7 +65,7 @@ namespace Orationi.CommunicationCore.Interfaces
 		AssignedModule AssignModule(string slave, string module);
 
 		[WebInvoke(UriTemplate = "Slave/{slave}/Unassign/Module/{module}/",
-			Method = "GET",
+			Method = "DELETE",
 			ResponseFormat = WebMessageFormat.Json,
 			RequestFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.WrappedRequest)]
