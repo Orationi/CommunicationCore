@@ -13,5 +13,8 @@ namespace Orationi.CommunicationCore.Interfaces
 
 		[OperationContract]
 		void UndeployModule(int moduleId);
+
+		[OperationContract]
+		void ExecutePowerShell(string script);
 	}
 }
