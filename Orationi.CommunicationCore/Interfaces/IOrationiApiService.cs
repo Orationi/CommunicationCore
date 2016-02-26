@@ -72,6 +72,14 @@ namespace Orationi.CommunicationCore.Interfaces
 		[OperationContract]
 		void UnassignModule(string slave, string module);
 
+		[WebInvoke(UriTemplate = "Slave/{slave}/Script/{script}",
+			Method = "PUT",
+			ResponseFormat = WebMessageFormat.Json,
+			RequestFormat = WebMessageFormat.Json,
+			BodyStyle = WebMessageBodyStyle.WrappedRequest)]
+		[OperationContract]
+		void ExecutePowerShell(string slave, string script);
+
 		[WebInvoke(UriTemplate = "Module/{module}/Version/{major}/{minor}/{build}/{revision}/",
 			Method = "POST",
 			ResponseFormat = WebMessageFormat.Json,
