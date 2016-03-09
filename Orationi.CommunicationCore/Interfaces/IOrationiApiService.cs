@@ -1,40 +1,41 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.ServiceModel;
 using Orationi.CommunicationCore.Model;
 
 namespace Orationi.CommunicationCore.Interfaces
 {
-	[ServiceContract(Namespace = "https://orationi.org/master/Api/v1/", SessionMode = SessionMode.Required)]
-	public interface IOrationiApiService
-	{
-		[OperationContract]
-		string GetVersion();
+    [ServiceContract(Namespace = "https://orationi.org/master/Api/v1/", SessionMode = SessionMode.Required)]
+    public interface IOrationiApiService
+    {
+        [OperationContract]
+        string GetVersion();
 
-		[OperationContract]
-		OrationiSlaveItem[] GetSlavesList();
+        [OperationContract]
+        OrationiSlaveItem[] GetSlavesList();
 
-		[OperationContract]
-		ModuleItem[] GetModulesList();
+        [OperationContract]
+        ModuleItem[] GetModulesList();
 
-		[OperationContract]
-		ModuleVersionItem[] GetModuleVerionsList(string module);
+        [OperationContract]
+        ModuleVersionItem[] GetModuleVerionsList(int moduleId);
 
-		[OperationContract]
-		ModuleItem RegisterModule(string moduleName);
+        [OperationContract]
+        ModuleItem RegisterModule(string moduleName);
 
-		[OperationContract]
-		AssignedModule[] UnregisterModule(string module);
+        [OperationContract]
+        AssignedModule[] UnregisterModule(int moduleId);
 
-		[OperationContract]
-		AssignedModule AssignModule(string slave, string module);
+        [OperationContract]
+        AssignedModule AssignModule(Guid slaveId, int moduleId);
 
-		[OperationContract]
-		void UnassignModule(string slave, string module);
+        [OperationContract]
+        void UnassignModule(Guid slaveId, int moduleId);
 
-		[OperationContract]
-		void ExecutePowerShell(string slave, string script);
+        [OperationContract]
+        void ExecutePowerShell(Guid slaveId, string script);
 
-		[OperationContract]
-		void UploadModuleVersion(string module, string major, string minor, string build, string revision, Stream packageStream);
-	}
+        [OperationContract]
+        void UploadModuleVersion(int moduleId, string major, string minor, string build, string revision, Stream packageStream);
+    }
 }
