@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IOrationiApiService.cs" />
+    <Compile Include="Interfaces\IOrationiWebApiService.cs" />
     <Compile Include="Interfaces\IOrationiMasterService.cs" />
     <Compile Include="Interfaces\IOrationiSlaveCallback.cs" />
     <Compile Include="Model\AssignedModule.cs" />
