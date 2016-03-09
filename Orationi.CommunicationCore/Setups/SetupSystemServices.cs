@@ -5,6 +5,26 @@ namespace Orationi.CommunicationCore.Setups
 {
 	public static class SetupSystemServices
 	{
+		public static string[] IisFeatureNames = {
+				"IIS-ApplicationDevelopment",
+				"IIS-CommonHttpFeatures",
+				"IIS-DefaultDocument",
+				"IIS-ISAPIExtensions",
+				"IIS-ISAPIFilter",
+				"IIS-ManagementConsole",
+				"IIS-NetFxExtensibility",
+				"IIS-RequestFiltering",
+				"IIS-Security",
+				"IIS-StaticContent",
+				"IIS-WebServer",
+				"IIS-WebServerRole",
+			};
+
+		public static string SetupIIS(string[] featureNames)
+		{
+			return Run("dism", string.Format("/NoRestart /Online /Enable-Feature {0}",
+				string.Join(" ", featureNames.Select(name => string.Format("/FeatureName:{0}", name)))));
+		}
 
 		public static string Run(string fileName, string arguments)
 		{
@@ -21,28 +41,6 @@ namespace Orationi.CommunicationCore.Setups
 				process.WaitForExit();
 				return process.StandardOutput.ReadToEnd();
 			}
-		}
-
-		public static string SetupIIS()
-		{
-			var featureNames = new[]
-			  {
-				"IIS-ApplicationDevelopment",
-				"IIS-CommonHttpFeatures",
-				"IIS-DefaultDocument",
-				"IIS-ISAPIExtensions",
-				"IIS-ISAPIFilter",
-				"IIS-ManagementConsole",
-				"IIS-NetFxExtensibility",
-				"IIS-RequestFiltering",
-				"IIS-Security",
-				"IIS-StaticContent",
-				"IIS-WebServer",
-				"IIS-WebServerRole",
-			};
-
-			return Run("dism", string.Format("/NoRestart /Online /Enable-Feature {0}",
-				string.Join(" ", featureNames.Select(name => string.Format("/FeatureName:{0}", name)))));
 		}
 	}
 }
