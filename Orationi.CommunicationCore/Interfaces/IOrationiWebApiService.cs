@@ -6,7 +6,7 @@ using Orationi.CommunicationCore.Model;
 namespace Orationi.CommunicationCore.Interfaces
 {
 	[ServiceContract(Namespace = "https://orationi.org/master/WebApi/v1/", SessionMode = SessionMode.NotAllowed)]
-	public interface IOrationiWebApiService
+	public interface IOrationiWebApiService : IOrationiApiService
 	{
 		[WebInvoke(UriTemplate = "Version/",
 		Method = "GET",
@@ -14,7 +14,7 @@ namespace Orationi.CommunicationCore.Interfaces
 		RequestFormat = WebMessageFormat.Json,
 		BodyStyle = WebMessageBodyStyle.WrappedRequest)]
 		[OperationContract]
-		string GetVersion();
+		new string GetVersion();
 
 		[WebInvoke(UriTemplate = "Slaves/",
 			Method = "GET",
@@ -22,7 +22,7 @@ namespace Orationi.CommunicationCore.Interfaces
 			RequestFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.WrappedRequest)]
 		[OperationContract]
-		OrationiSlaveItem[] GetSlavesList();
+		new OrationiSlaveItem[] GetSlavesList();
 
 		[WebInvoke(UriTemplate = "Modules/",
 			Method = "GET",
@@ -30,7 +30,7 @@ namespace Orationi.CommunicationCore.Interfaces
 			RequestFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.WrappedRequest)]
 		[OperationContract]
-		ModuleItem[] GetModulesList();
+		new ModuleItem[] GetModulesList();
 
 		[WebInvoke(UriTemplate = "Module/{module}/Versions/",
 			Method = "GET",
@@ -46,7 +46,7 @@ namespace Orationi.CommunicationCore.Interfaces
 			RequestFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.WrappedRequest)]
 		[OperationContract]
-		ModuleItem RegisterModule(string moduleName);
+		new ModuleItem RegisterModule(string moduleName);
 
 		[WebInvoke(UriTemplate = "Unregister/Module/{module}/",
 			Method = "DELETE",
